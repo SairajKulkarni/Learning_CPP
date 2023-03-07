@@ -1,5 +1,3 @@
-/*
-
 + ve numbers, -ve numbers, characters, floating.
 
 1) Storing +ve numbers:
@@ -166,6 +164,3 @@
    So out of 32 bits 26 bits are used to store 123 and the remaining 6 bits are used to store 
    (-2) i.e the power of 10.
    123 will be converted in binary and stored using those 26 bits.
-    
-
-*/
