@@ -1,0 +1,171 @@
+/*
+
++ ve numbers, -ve numbers, characters, floating.
+
+1) Storing +ve numbers:
+
+   int i = 10;
+   We will get 4 bytes of memory space and we will store 10 in the block named i.
+   But the computer dosen't understand this '10'. So it is simple to store positive numbers
+   just convert them into their binary equivalent and coomputer stores them.
+   int j = 5;
+
+   *******
+   * 101 *
+   *******
+
+   Like this 5 is converted to its binary equivalent and then stored in a bock named j.
+
+2) How to store characters:
+
+   char c = 'a';
+   BUt again the same problem the computer doesen't understand/ know what is 'a'.
+   So for this every character is assigned somee ASCII values for this purpose and then these
+   ASCII values are converted in their binary equivalent and stored.
+
+   Following is the ASCII value chart.
+    Dec  Hex  Oct  Char   Binary
+    ------------------------------
+    0    0x00 000  NUL    00000000
+    1    0x01 001  SOH    00000001
+    2    0x02 002  STX    00000010
+    3    0x03 003  ETX    00000011
+    4    0x04 004  EOT    00000100
+    5    0x05 005  ENQ    00000101
+    6    0x06 006  ACK    00000110
+    7    0x07 007  BEL    00000111
+    8    0x08 010  BS     00001000
+    9    0x09 011  HT     00001001
+    10   0x0A 012  LF     00001010
+    11   0x0B 013  VT     00001011
+    12   0x0C 014  FF     00001100
+    13   0x0D 015  CR     00001101
+    14   0x0E 016  SO     00001110
+    15   0x0F 017  SI     00001111
+    16   0x10 020  DLE    00010000
+    17   0x11 021  DC1    00010001
+    18   0x12 022  DC2    00010010
+    19   0x13 023  DC3    00010011
+    20   0x14 024  DC4    00010100
+    21   0x15 025  NAK    00010101
+    22   0x16 026  SYN    00010110
+    23   0x17 027  ETB    00010111
+    24   0x18 030  CAN    00011000
+    25   0x19 031  EM     00011001
+    26   0x1A 032  SUB    00011010
+    27   0x1B 033  ESC    00011011
+    28   0x1C 034  FS     00011100
+    29   0x1D 035  GS     00011101
+    30   0x1E 036  RS     00011110
+    31   0x1F 037  US     00011111
+    32   0x20 040 (space) 00100000
+    33   0x21 041  !      00100001
+    34   0x22 042  "      00100010
+    35   0x23 043  #      00100011
+    36   0x24 044  $      00100100
+    37   0x25 045  %      00100101
+    38   0x26 046  &      00100110
+    39   0x27 047  '      00100111
+    40   0x28 050  (      00101000
+    41   0x29 051  )      00101001
+    42   0x2A 052  *      00101010
+    43   0x2B 053  +      00101011
+    44   0x2C 054  ,      00101100
+    45   0x2D 055  -      00101101
+    46   0x2E 056  .      00101110
+    47   0x2F 057  /      00101111
+    48   0x30 060  0      00110000
+    49   0x31 061  1      00110001
+    50   0x32 062  2      00110010
+    51   0x33 063  3      00110011
+    52   0x34 064  4      00110100
+    53   0x35 065  5      00110101
+    54   0x36 066  6      00110110
+    55   0x37 067  7      00110111
+    56   0x38 070  8      00111000
+    57   0x39 071  9      00111001
+    58   0x3A 072  :      00111010
+    59   0x3B 073  ;      00111011
+    60   0x3C 074  <      00111100
+    61   0x3D 075  =      00111101
+    62   0x3E 076  >      00111110
+    63   0x3F 077  ?      00111111
+    64   0x40 100  @      01000000
+    65   0x41 101  A      01000001
+    66   0x42 102  B      01000010
+    67   0x43 103  C      01000011
+    68   0x44 104  D      01000100
+    69   0x45 105  E      01000101
+    70   0x46 106  F      01000110
+    71   0x47 107  G      01000111
+    72   0x48 110  H      01001000
+    73   0x49 111  I      01001001
+    74   0x4A 112  J      01001010
+    75   0x4B 113  K      01001011
+    76   0x4C 114  L      01001100
+    77   0x4D 115  M      01001101
+    78   0x4E 116  N      01001110
+    79   0x4F 117  O      01001111
+    80   0x50 120  P      01010000
+    81   0x51 121  Q      01010001
+    82   0x52 122  R      01010010
+    83   0x53 123  S      01010011
+    84   0x54 124  T      01010100
+    85   0x55 125  U      01010101
+    86   0x56 126  V      01010110
+    87   0x57 127  W      01010111
+    88   0x58 130  X      01011000
+    89   0x59 131  Y      01011001
+    90   0x5A 132  Z      01011010
+    91   0x5B 133  [      01011011
+    92   0x5C 134  \      01011100
+    93   0x5D 135  ]      01011101
+    94   0x5E 136  ^      01011110
+    95   0x5F 137  _      01011111
+    96   0x60 140  `      01100000
+    97   0x61 141  a      01100001
+    98   0x62 142  b      01100010
+    99   0x63 143  c      01100011
+    100  0x64 144  d      01100100
+    101  0x65 145  e      01100101
+    102  0x66 146  f      01100110
+    103  0x67 147  g      01100111
+    104  0x68 150  h      01101000
+    105  0x69 151  i      01101001
+    106  0x6A 152  j      01101010
+    107  0x6B 153  k      01101011
+    108  0x6C 154  l      01101100
+    109  0x6D 155  m      01101101
+    110  0x6E 156  n      01101110
+    111  0x6F 157  o      01101111
+    112  0x70 160  p      01110000
+    113  0x71 161  q      01110001
+    114  0x72 162  r      01110010
+    115  0x73 163  s      01110011
+    116  0x74 164  t      01110100
+    117  0x75 165  u      01110101
+    118  0x76 166  v      01110110
+    119  0x77 167  w      01110111
+    120  0x78 170  x      01111000
+    121  0x79 171  y      01111001
+    122  0x7A 172  z      01111010
+    123  0x7B 173  {      01111011
+    124  0x7C 174  |      01111100
+    125  0x7D 175  }      01111101
+    126  0x7E 176  ~      01111110
+    127  0x7F 177  DEL    01111111
+
+3) How floating point numbers are stored.
+
+   float f = 1.23;
+   123 * (10^(-2))
+
+   We know that the float is of 4 bytes i.e 4*8 bits  = 32 bits.
+   
+   1 byte = 8 bits.
+   So out of 32 bits 26 bits are used to store 123 and the remaining 6 bits are used to store 
+   (-2) i.e the power of 10.
+   123 will be converted in binary and stored using those 26 bits.
+    
+
+*/

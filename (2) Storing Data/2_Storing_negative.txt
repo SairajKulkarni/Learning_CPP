@@ -1,0 +1,81 @@
+How to store negative numbers?
+
+Supposoe we have 4 bytes of memory space and we want to find the smallest and largest number that 
+we can store in it.
+
+b <= data <= a
+
+We want to find a and b.
+
+For simplification lets say we have 4 bits(i.e half a byte)
+
+largest ->  1111 (15)
+smallest -> 0000 (0)
+
+Problem with this approach is that we have negative numbers also.
+So how do we store them.
+
+So  difference between 10 and -10 is only of the sign, so we can utilise 1 bit to store the sign.
+ 
+0 - positive
+1 - negative
+
+largest -> '0'111 (7)
+smallest -> '1'111 (-7)
+
+but there is again one more problem which is, ther is ambiguity in representing '0'.
+0000 (+0)
+1000 (-0)
+
+So we will use 2's cmplement to represent -ve numbers.
+2's complement = 1's complement + 1
+1's complement means flip all the digits of a given binary number 
+0-1
+1-0
+
+5 -> 101
+-5 -> (1's complement of 5) + 1
+010 + 1 = 011 (-5) in this way we will represent negative numbers using 2's cmplement.
+
+in binary -
+
+0+0=0
+0+1=1
+1+1=10 (1 is in carry, 0 is the sum)
+1+1+1=11 (1 is in carry and 1 is sum)
+
+5-5 we will not do subtraction we will just add 2's complement of 5 in binary of 5.
+
+0001 = 1st bit is 0 so the number is positive and its magnitude is 1.
+1001 - 1st bit is 1 so the number is negative and for finding the magnitude we will find 2's 
+       complement. 0110 + 1 = 0111.
+       So the number is negative and its magnitude is 7. 
+       It means that 1001 is the bunary representation of (-7).
+
+In our previous approach '1000' this was representing -ve zero so lets se whatt this represents
+in 2's complement. So the 1st bit is 1 so the number is negative and for finding the magnitude of 
+the number we will find its 2's complement.
+
+0111+1 = 1000 this is binary reperesentaion of 8.
+So 1000 becomes (-8).
+
+In our previous approach the range was -7 to +7.
+But now we have range of -8 to +7.
+This is bcause in first approach 0 was being represented by two binary representations and here
+one of those representations now represent the (-8).
+
+Range =>  -2^(4-1) to 2^(4-1)-1
+
+We can generalise this for n bits,
+So the range for n bits will become :
+-2^(n-1) to 2^(n-1)-1
+
+So for char data-type, size is 1byte i.e 8 bits.
+so range => -2(8-1) to 2^(8-1)-1
+i.e -128 to 127.
+
+short int: usually 2 bytes or 16 bits. Range: -32768 to 32767. Equivalent to -2^(15) to 2^(15)-1. Can store up to 5 digits.
+
+int: usually 4 bytes or 32 bits. Range: -2147483648 to 2147483647. Equivalent to -2^(31) to 2^(31)-1. Can store up to 9 digits. Same as -(10^9) to (10^9)-1.
+
+long long int: usually 8 bytes or 64 bits. Range: -9223372036854775808 to 9223372036854775807. Equivalent to -2^(63) to 2^(63)-1. Can store upto 18 digits. Same as -(10^18) to (10^18)-1
