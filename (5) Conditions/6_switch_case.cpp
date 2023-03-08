@@ -32,7 +32,7 @@ int main()
 
 /*
 Learnings:
-Basically it is used to avoif long ladder of if-- (else-if)--(else-if)--(else-if)--(else-if).....
+Basically it is used to avoid long ladder of if-- (else-if)--(else-if)--(else-if)--(else-if).....
 
 Syntax of switch case is:
 
